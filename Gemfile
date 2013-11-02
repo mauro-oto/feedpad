@@ -12,6 +12,9 @@ gem 'devise'
 # Haml
 gem 'haml'
 
+#OAuth2
+gem 'omniauth-google-oauth2'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
