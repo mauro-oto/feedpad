@@ -1,0 +1,30 @@
+<p>
+<h1>Showing channels for <%= current_user.login_name %>: </h1>
+<br />
+ 
+<center>
+<table id="channels" class="table table-striped table-condensed table-hover">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>URL</th>
+    <th></th>
+    <th></th>
+  </tr>
+ </thead>
+ <tbody>
+  <% @channels.each do |channel| %>
+    <tr>
+      <td><%= channel.name %></td>
+      <td><%= channel.url %></td>
+      <td><%= link_to 'Open', channel_path(channel), class: "btn btn-info btn-mini" %></td>
+      <td><%= link_to 'Delete', channel_path(channel), class: "btn btn-danger btn-mini", method: :delete, data: { confirm: 'Press OK to confirm channel deletion' } %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+</center>
+
+<p>
+<%= button_to 'New Channel', new_channel_path, class: "btn btn-warning", :method => :get %>
+</p>
