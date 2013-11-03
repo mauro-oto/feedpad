@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, :omniauth_providers => [:google_oauth2]
+  
+  has_many :channels
 
   #validates :first_name, presence: true
   #validates_length_of :first_name, :maximum => 50, :message => "should be less than 50 characters"
