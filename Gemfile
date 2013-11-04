@@ -12,8 +12,11 @@ gem 'devise'
 # Haml
 gem 'haml'
 
-#OAuth2
+# OAuth2
 gem 'omniauth-google-oauth2'
+
+# FeedZirra
+gem 'feedzirra'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -42,7 +45,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'

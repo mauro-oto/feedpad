@@ -6,6 +6,8 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "feedpad.confirm@gmail.com"
 
+  config.secret_key = 'ab2086c43154f8103e21a28960cc0d25903385533cab709f04fb72bf6f17d3af3c83c0b6cf43620c3bbe0b57747e6a4e8da8bd19d0f79ddceff16a0c8b5439d5'
+
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
 

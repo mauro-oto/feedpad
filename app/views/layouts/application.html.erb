@@ -9,11 +9,12 @@
   <body>
     <header class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
-        <div class="container">
+        <div class="container-fluid">
           <%= render 'layouts/navigation' %>
         </div>
       </nav>
     </header>
+    <% if !current_user %>
     <main role="main">
       <div class="container">
         <div class="content">
@@ -28,5 +29,27 @@
         </div>
       </div>
     </main>
+    <% else %>
+    <div class="box">
+      <div class="row-fluid">
+        <div class="column span3">
+          <ul class="nav nav-list nav-fixed-sidebar">
+          <li class="nav-header">Navigation</li>
+          <li class="active"><a href="#">All channels</a></li>
+          <li><a href="#">Starred</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          </ul>
+        </div>
+        <div class="column span9">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </body>
 </html>

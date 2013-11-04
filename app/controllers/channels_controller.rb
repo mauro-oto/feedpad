@@ -14,6 +14,7 @@ class ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
     @channel.user_id = current_user.id
     @channel.save
+    Article.generate_articles(@channel.url, @channel.id)
     redirect_to @channel
   end
   
