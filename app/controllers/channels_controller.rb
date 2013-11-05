@@ -20,6 +20,7 @@ class ChannelsController < ApplicationController
   
   def show
     @channel = Channel.find(params[:id])
+    @articles = @channel.articles
   end
     
   def destroy
