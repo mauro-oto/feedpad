@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103222256) do
+ActiveRecord::Schema.define(version: 20131108034057) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20131103222256) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "channel_id"
+    t.string   "unread"
   end
 
   create_table "channels", force: true do |t|

@@ -1,5 +1,5 @@
 <p>
-<h1>Showing channels for <%= current_user.login_name %>: </h1>
+<h2>Showing latest news for <%= current_user.login_name %> </h2>
 <br />
  
 <center>
@@ -7,18 +7,16 @@
 <thead>
   <tr>
     <th>Name</th>
-    <th>URL</th>
+    <th>Description</th>
     <th></th>
     <th></th>
   </tr>
  </thead>
  <tbody>
-  <% @channels.each do |channel| %>
+  <% @latest_articles.each do |article| %>
     <tr>
-      <td><%= channel.name %></td>
-      <td><%= channel.url %></td>
-      <td><%= link_to 'Open', channel_path(channel), class: "btn btn-info btn-mini" %></td>
-      <td><%= link_to 'Delete', channel_path(channel), class: "btn btn-danger btn-mini", method: :delete, data: { confirm: 'Press OK to confirm channel deletion' } %></td>
+      <td class="span5"><%= article.title %></td>
+      <td class="span7"><%= article.description.gsub(/(<[^>]+>)/, '').gsub("&aacute;", "á").gsub("&eoacute;", "é").gsub("&iacute;", "í").gsub("&oacute;", "ó").gsub("&uacute;", "ú").gsub("&ntilde;", "ñ") %></td>
     </tr>
   <% end %>
 </tbody>

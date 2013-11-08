@@ -8,6 +8,7 @@ class ChannelsController < ApplicationController
   
   def index
     @channels = current_user.channels
+    @latest_articles = current_user.channels.to_a.collect {|c| c.articles.to_a }.flatten.last(5)
   end
   
   def create
@@ -21,6 +22,9 @@ class ChannelsController < ApplicationController
   def show
     @channel = Channel.find(params[:id])
     @articles = @channel.articles
+    @articles.each do |a|
+      a.update_attributes(:unread => "no")
+    end
   end
     
   def destroy

@@ -16,10 +16,15 @@ class Article < ActiveRecord::Base
           :link => entry.url,
           :description => entry.summary,
           :pubDate => entry.published,
-          :channel_id => channel_id
+          :channel_id => channel_id,
+          :unread => "yes"
         )
       end
     end
+  end
+
+  def self.unread
+    where(:unread => "yes")
   end
 
 end

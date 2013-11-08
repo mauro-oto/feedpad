@@ -35,13 +35,15 @@
         <div class="column span3">
           <ul class="nav nav-list nav-fixed-sidebar">
           <li class="nav-header">Navigation</li>
-          <li class="active"><%= link_to "All channels", channels_path %></a></li>
+          <li class=<%= 'active' if !params[:id] %>><%= link_to "All channels", channels_path %></a></li>
           <li><a href="#">Starred</a></li>
           <li class="divider"></li>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
+          <li class="nav-header">My Channels</li>
+          <% current_user.channels.each do |c| %>
+          <% if !c.name.blank? %>
+          <li class=<%= 'active' if params[:id] == "#{c.id}" %>><%= link_to "#{c.name} <b>(#{c.articles.unread.count})</b>".html_safe, channel_path(c) %></li>
+          <% end %>
+          <% end %>
           </ul>
         </div>
         <div class="column span9">
