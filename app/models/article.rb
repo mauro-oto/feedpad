@@ -22,6 +22,14 @@ class Article < ActiveRecord::Base
       end
     end
   end
+  
+  def self.update_feeds
+    User.all.each do |u|
+      u.channels.each do |c|
+        Article.generate_articles(c.url, c.id)
+      end
+    end
+  end
 
   def self.unread
     where(:unread => "yes")

@@ -34,9 +34,10 @@
       <div class="row-fluid">
         <div class="column span3">
           <ul class="nav nav-list nav-fixed-sidebar">
+          <%= button_to 'SUSCRIBE', new_channel_path, class: "btn btn-warning", :method => :get %>
           <li class="nav-header">Navigation</li>
-          <li class=<%= 'active' if !params[:id] %>><%= link_to "All channels", channels_path %></a></li>
-          <li><a href="#">Starred</a></li>
+          <li class=<%= 'active' if !params[:id] %>><%= link_to raw('<i class="fa fa-rss"></i> Home'), channels_path %></li>
+          <li><a href="#"><i class="fa fa-star"></i> Starred</a></li>
           <li class="divider"></li>
           <li class="nav-header">My Channels</li>
           <% current_user.channels.each do |c| %>

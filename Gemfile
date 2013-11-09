@@ -55,3 +55,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Whenever
+gem 'whenever', :require => false
+
+# Font-Awesome
+gem "font-awesome-rails"

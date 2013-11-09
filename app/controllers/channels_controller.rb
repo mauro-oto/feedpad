@@ -16,14 +16,16 @@ class ChannelsController < ApplicationController
     @channel.user_id = current_user.id
     @channel.save
     Article.generate_articles(@channel.url, @channel.id)
-    redirect_to @channel
+    redirect_to channels_path
   end
   
   def show
     @channel = Channel.find(params[:id])
-    @articles = @channel.articles
+    @articles = @channel.articles.order('pubDate DESC')
     @articles.each do |a|
-      a.update_attributes(:unread => "no")
+      if a.unread
+        a.update_attributes(:unread => "no")
+      end
     end
   end
     

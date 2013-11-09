@@ -7,10 +7,10 @@
  <tbody>
   <% @articles.each do |article| %>
     <tr>
-      <td class="span1"><div style="margin:5px 15px 0px 15px"><i class="icon-star"></i></div></td>
-      <td class="span5"><%= link_to(article.title, article.link) %></td>
-      <td class="span4"><%= truncate(article.description.gsub(/(<[^>]+>)/, '').gsub("&aacute;", "á").gsub("&eoacute;", "é").gsub("&iacute;", "í").gsub("&oacute;", "ó").gsub("&uacute;", "ú").gsub("&ntilde;", "ñ"), length: 60, separator: ' ') %></td> 
-      <td class="span2"><%= article.pubDate.strftime("%b %d, %Y") %></td>
+      <td class="span1"><div style="margin:5px 15px 0px 15px"><i class="fa fa-star-o fa-lg"></i></div></td>
+      <td class="span4"><%= link_to(article.title, article.link) %></td>
+      <td class="span5"><%= truncate(article.description.gsub(/(<[^>]+>)/, '').gsub("&aacute;", "á").gsub("&eoacute;", "é").gsub("&iacute;", "í").gsub("&oacute;", "ó").gsub("&uacute;", "ú").gsub("&ntilde;", "ñ"), length: 60, separator: ' ') %></td> 
+      <td class="span2"><%= time_ago_in_words(article.pubDate, include_seconds: true) %> ago</td>
     </tr>
   <% end %>
 </tbody>
