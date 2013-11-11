@@ -1,0 +1,20 @@
+<p>
+<h2>Showing starred articles for <%= current_user.login_name %>: </h2>
+<br />
+ 
+<center>
+<table id="articles" class="table table-striped table-condensed table-hover">
+ <tbody>
+  <% @starred.each do |starred| %>
+    <tr>
+      <td class="span4"><%= link_to(starred.title, starred.link) %></td>
+      <td class="span5"><%= truncate(starred.description.gsub(/(<[^>]+>)/, '').gsub("&aacute;", "á").gsub("&eoacute;", "é").gsub("&iacute;", "í").gsub("&oacute;", "ó").gsub("&uacute;", "ú").gsub("&ntilde;", "ñ"), length: 60, separator: ' ') %></td> 
+      <td class="span2"><%= time_ago_in_words(starred.pubDate, include_seconds: true) %> ago</td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+</center>
+
+<p>
+</p>

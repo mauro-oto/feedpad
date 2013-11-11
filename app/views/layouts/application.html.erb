@@ -34,16 +34,23 @@
       <div class="row-fluid">
         <div class="column span3">
           <ul class="nav nav-list nav-fixed-sidebar">
-          <%= button_to 'SUSCRIBE', new_channel_path, class: "btn btn-warning", :method => :get %>
+          <a id="go" href="#newrss" class="btn btn-warning"><i class='icon-plus icon-white'></i>  Suscribe</a>
+          <li class="divider"></li>
           <li class="nav-header">Navigation</li>
           <li class=<%= 'active' if !params[:id] %>><%= link_to raw('<i class="fa fa-rss"></i> Home'), channels_path %></li>
           <li><a href="#"><i class="fa fa-star"></i> Starred</a></li>
           <li class="divider"></li>
           <li class="nav-header">My Channels</li>
           <% current_user.channels.each do |c| %>
-          <% if !c.name.blank? %>
-          <li class=<%= 'active' if params[:id] == "#{c.id}" %>><%= link_to "#{c.name} <b>(#{c.articles.unread.count})</b>".html_safe, channel_path(c) %></li>
-          <% end %>
+            <% if !c.name.blank? %>
+              <li class=<%= 'active' if params[:id] == "#{c.id}" %>>
+              <% if c.articles.unread.count > 0 %>
+                <%= link_to "<b>#{c.name} <span class='badge unread-count'>#{c.articles.unread.count}</span></b>".html_safe, channel_path(c) %>
+              <% else %>
+                <%= link_to c.name, channel_path(c) %>
+              <% end %>
+              </li>
+            <% end %>
           <% end %>
           </ul>
         </div>
@@ -54,5 +61,10 @@
       </div>
     </div>
     <% end %>
+    
+    <div id="newrss">
+      <%= render 'channels/new' %>
+    </div>
+
   </body>
 </html>

@@ -2,12 +2,9 @@
 <h2>New Channel: </h2>
 
 <%= form_for :channel, url: channels_path do |f| %>
-  <p>
-    <%= f.label :name, "Name: " %><%= f.text_field :name %>
-  </p>
  
   <p>
-    <%= f.label :url, "URL: " %><%= f.text_field :url %>
+    <%= f.text_field :url, placeholder: "URL" %>
   </p>
  
   <p>

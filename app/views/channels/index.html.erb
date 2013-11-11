@@ -1,5 +1,5 @@
 <p>
-<h2>Showing latest news for <%= current_user.login_name %> </h2>
+<h2>Showing newest articles for <%= current_user.login_name %> </h2>
 <br />
  
 <center>
@@ -22,7 +22,3 @@
 </tbody>
 </table>
 </center>
-
-<p>
-<%= button_to 'New Channel', new_channel_path, class: "btn btn-warning", :method => :get %>
-</p>

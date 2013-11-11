@@ -14,11 +14,20 @@ class ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
     @channel.user_id = current_user.id
-    @channel.save
+
+    respond_to do |format|
+      if @channel.save
+        format.html { redirect_to channels_path, notice: "Subscription to the channel was successful"}
+        format.json { render json: @channel, status: :created, location: @channel }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @channel.errors, status: :unprocessable_entity }
+      end
+    end
+
     Article.generate_articles(@channel.url, @channel.id)
-    redirect_to channels_path
   end
-  
+
   def show
     @channel = Channel.find(params[:id])
     @articles = @channel.articles.order('pubDate DESC')
@@ -38,7 +47,7 @@ class ChannelsController < ApplicationController
   
   private
   def channel_params
-    params.require(:channel).permit(:name, :url)
+    params.require(:channel).permit(:url)
   end
 
   def set_channel

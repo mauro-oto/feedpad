@@ -6,6 +6,11 @@ class Article < ActiveRecord::Base
   def self.generate_articles(url, channel_id)
     feed = Feedzirra::Feed.fetch_and_parse(url)
     add_entries(feed.entries, channel_id)
+    channel = Channel.find(channel_id)
+    if !channel.name
+      channel.name = feed.title
+      channel.save
+    end
   end
 
   def self.add_entries(entries, channel_id)
