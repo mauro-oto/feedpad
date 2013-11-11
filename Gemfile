@@ -60,3 +60,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem "font-awesome-rails"
 
 gem "rufus-scheduler"
+
+gem 'activeadmin', git: 'git://github.com/gregbell/active_admin.git'
