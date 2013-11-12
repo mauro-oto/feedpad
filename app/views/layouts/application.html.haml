@@ -29,11 +29,17 @@
                 Suscribe
               %li.divider
               %li.nav-header Navigation
-              <li class=#{'active' if !params[:id]}>#{link_to raw('<i class="fa fa-rss"></i> Home'), channels_path}
-              %li
-                %a{:href => "#"}
-                  %i.fa.fa-star
-                  Starred
+              <li class=#{'active' if action_name == "index"}>#{link_to raw('<i class="fa fa-rss"></i> Home'), channels_path}
+              - if action_name == "starred"
+                %li.active
+                  %a{:href => articles_starred_path}
+                    %i.fa.fa-star
+                    Starred
+              - else
+                %li
+                  %a{:href => articles_starred_path}
+                    %i.fa.fa-star
+                    Starred
               %li.divider
               %li.nav-header My Channels
               - current_user.channels.each do |c|

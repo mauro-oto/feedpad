@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111051135) do
+ActiveRecord::Schema.define(version: 20131111202528) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20131111051135) do
     t.datetime "updated_at"
     t.integer  "channel_id"
     t.string   "unread"
+    t.string   "star"
   end
 
   create_table "channels", force: true do |t|

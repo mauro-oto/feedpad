@@ -9,7 +9,10 @@
           %tr
             %td.span1
               %div{:style => "margin:5px 15px 0px 15px"}
-                %i.fa.fa-star-o.fa-lg
+              - if article.star == "yes"
+                = link_to raw("<i class='fa fa-star fa-lg'></i>"), channel_article_star_path(@channel.id, article.id), method: :put
+              - else
+                = link_to raw("<i class='fa fa-star-o fa-lg'></i>"), channel_article_star_path(@channel.id, article.id), method: :put
             %td.span4= link_to(article.title, article.link)
             %td.span5= truncate(article.description.gsub(/(<[^>]+>)/, '').gsub("&aacute;", "á").gsub("&eoacute;", "é").gsub("&iacute;", "í").gsub("&oacute;", "ó").gsub("&uacute;", "ú").gsub("&ntilde;", "ñ"), length: 60, separator: ' ')
             %td.span2

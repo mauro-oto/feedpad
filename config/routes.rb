@@ -7,8 +7,12 @@ Feedpad::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :channels do
-    resources :articles
+    resources :articles do
+      put 'star' => 'articles#star_article'
+    end
   end
+
+  get 'articles/starred' => 'articles#starred'
 
   root :to => 'channels#index'
 

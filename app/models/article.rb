@@ -22,7 +22,8 @@ class Article < ActiveRecord::Base
           :description => entry.summary,
           :pubDate => entry.published,
           :channel_id => channel_id,
-          :unread => "yes"
+          :unread => "yes",
+          :star => "no"
         )
       end
     end
