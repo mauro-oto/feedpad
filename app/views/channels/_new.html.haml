@@ -1,0 +1,7 @@
+%p
+  %h2 New Channel:
+  = form_for :channel, url: channels_path do |f|
+    %p
+      = f.text_field :url, placeholder: "URL"
+    %p
+      = f.submit "Create Channel", :class => "btn btn-success"

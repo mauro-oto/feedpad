@@ -1,0 +1,17 @@
+%p
+  %h2
+    Showing newest articles for #{current_user.login_name}
+  %br/
+  %center
+    %table#channels.table.table-striped.table-condensed.table-hover
+      %thead
+        %tr
+          %th Name
+          %th Description
+          %th
+          %th
+      %tbody
+        - @latest_articles.each do |article|
+          %tr
+            %td.span5= article.title
+            %td.span7= article.description.gsub(/(<[^>]+>)/, '').gsub("&aacute;", "á").gsub("&eoacute;", "é").gsub("&iacute;", "í").gsub("&oacute;", "ó").gsub("&uacute;", "ú").gsub("&ntilde;", "ñ")

@@ -1,0 +1,50 @@
+!!!
+%html
+  %head
+    %title Feedpad
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %header.navbar.navbar-fixed-top
+      %nav.navbar-inner
+        .container-fluid
+          = render 'layouts/navigation'
+    - if !current_user
+      %main{:role => "main"}
+        .container
+          .content
+            .row
+              .span12
+                = render 'layouts/messages'
+                = yield
+            %footer
+    - else
+      .box
+        .row-fluid
+          .column.span3
+            %ul.nav.nav-list.nav-fixed-sidebar
+              %a#go.btn.btn-warning{:href => "#newrss"}
+                %i.icon-plus.icon-white
+                Suscribe
+              %li.divider
+              %li.nav-header Navigation
+              <li class=#{'active' if !params[:id]}>#{link_to raw('<i class="fa fa-rss"></i> Home'), channels_path}
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-star
+                  Starred
+              %li.divider
+              %li.nav-header My Channels
+              - current_user.channels.each do |c|
+                - if !c.name.blank?
+                  <li class=#{'active' if params[:id] == "#{c.id}"}>
+                  - if c.articles.unread.count > 0
+                    = link_to "<b>#{c.name} <span class='badge unread-count'>#{c.articles.unread.count}</span></b>".html_safe, channel_path(c)
+                  - else
+                    = link_to c.name, channel_path(c)
+          .column.span9
+            = render 'layouts/messages'
+            = yield
+    #newrss
+      = render 'channels/new'

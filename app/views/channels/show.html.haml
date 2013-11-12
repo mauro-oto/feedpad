@@ -1,0 +1,20 @@
+%p
+  %h2
+    Showing articles for #{@channel.name}:
+  %br/
+  %center
+    %table#articles.table.table-striped.table-condensed.table-hover
+      %tbody
+        - @articles.each do |article|
+          %tr
+            %td.span1
+              %div{:style => "margin:5px 15px 0px 15px"}
+                %i.fa.fa-star-o.fa-lg
+            %td.span4= link_to(article.title, article.link)
+            %td.span5= truncate(article.description.gsub(/(<[^>]+>)/, '').gsub("&aacute;", "á").gsub("&eoacute;", "é").gsub("&iacute;", "í").gsub("&oacute;", "ó").gsub("&uacute;", "ú").gsub("&ntilde;", "ñ"), length: 60, separator: ' ')
+            %td.span2
+              = time_ago_in_words(article.pubDate, include_seconds: true)
+              ago
+  %center
+    = link_to 'Unsuscribe from this channel', channel_path(@channel), class: "btn btn-primary", method: :delete, data: { confirm: 'Press OK to confirm channel deletion' }
+  %p
