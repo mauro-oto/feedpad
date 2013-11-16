@@ -1,0 +1,1 @@
+$('#stars_<%= @article.id %>').html("<%= escape_javascript(render 'articles/star', :article => @article, :channel => @channel) %>")

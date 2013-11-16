@@ -1,0 +1,4 @@
+- if article.star == "yes"
+  = link_to raw("<i class='fa fa-star fa-lg'></i>"), channel_article_star_path(@channel.id, article.id), :remote => true
+- else
+  = link_to raw("<i class='fa fa-star-o fa-lg'></i>"), channel_article_star_path(@channel.id, article.id), :remote => true

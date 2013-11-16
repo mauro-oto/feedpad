@@ -8,11 +8,13 @@ Feedpad::Application.routes.draw do
 
   resources :channels do
     resources :articles do
-      put 'star' => 'articles#star_article'
+      get 'star' => 'articles#star_article'
     end
   end
 
   get 'articles/starred' => 'articles#starred'
+
+  match '*path' => redirect { |p, req| req.flash[:error] = "Oops! The page you requested was not found."; '/' }, via: :get # redirigir todas las rutas que no macheen al index
 
   root :to => 'channels#index'
 
