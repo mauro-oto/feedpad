@@ -1,7 +1,7 @@
 feedpad
 =======
 
-Sistema de lectura de RSS para Altoros
+Sistema de lectura de RSS
 
 ### Preview: 
 
