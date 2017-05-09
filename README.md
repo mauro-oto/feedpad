@@ -1,7 +1,7 @@
 feedpad
 =======
 
-Sistema de lectura de RSS
+Subscribe to and read your favorite RSS feeds
 
 ### Preview: 
 
